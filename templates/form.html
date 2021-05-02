@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+
+        input {
+           font-size: 14px; 
+        }
+
+        textarea {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#">Admin</a></li>
+        <li><a href="menu.html">Menu</a></li>
+    </ul><br>
+    <form action="super" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Admin Panel</h2>
+        <h4><label for="food">Food Item Name</label></h4>
+        <input type="text" id="food" name="food"><br>
+        <h4>Food Item Discription</h4>
+        <textarea name="discp" rows="5" cols="45"></textarea><br>
+        <h4><label for="price">Price</label></h4>
+        <input type="number" id="price" name="price" step="any"><br>
+        <h4>Select Cuisine</h4>
+        <input list="cuisine" name="cuisine">
+        <datalist id="cuisine">
+            <option value="Chinese">
+            <option value="Indian">
+            <option value="Mexican">
+            <option value="Italian">
+        </datalist><br><br>
+        <input type="checkbox" id="chk1" name="chk1" value="True">
+        <label for="chk1"> Chef's Special</label><br>
+        <input type="checkbox" id="chk3" name="chk3" value="True">
+        <label for="vehicle3">Today's Special</label><br><br>    
+        <input type="radio" id="rd1" name="rd" value="Veg">
+        <label for="rd1">Veg</label><br>
+        <input type="radio" id="rd2" name="rd" value="Non Veg">
+        <label for="rd2">Non Veg</label><br><br> 
+        <h4><label for="img">Choose an image for the dish</label><br></h4>
+        <input type="file" id="img" name="img" accept="image/*">
+        <h4><label for="date">Date</label></h4>
+        <input type="date" id="date" name="date"><br><br>
+        <input type="submit" name="action" value="Insert">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="action" value="Delete">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" name="action" value="Update"><br>
+    </form>
+</body>
+</html>
